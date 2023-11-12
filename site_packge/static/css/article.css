@@ -1,0 +1,56 @@
+body {
+    height: 5000px;
+}
+
+/* Start content */
+.content {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+/* End content */
+
+/* Start aside */
+.content aside {
+    flex-basis: 23%;
+    background-color: var(--light-main);
+    height: calc(100vh - 98px);
+    overflow: auto;
+}
+
+.content aside .tutorial-section {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.content aside .tutorial-section .tutorial-title {
+    position: relative;
+    font-size: 1.3em;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: var(--dark-main);
+    padding: 10px;
+    border-left: 2px solid var(--dark-main);
+}
+
+.content aside .tutorial-section .tutorial-item a {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    text-decoration: none;
+    color: var(--dark-main);
+    transition: color 0.3s ease, background 0.3s ease;
+}
+
+.content aside .tutorial-section .tutorial-item a:hover {
+    background-color: var(--main);
+    color: var(--light-main)
+}
+/* End aside */
+
+/* Start article */
+.content article {
+    flex-basis: 73%;
+}
+/* End article */

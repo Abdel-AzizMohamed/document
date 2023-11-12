@@ -1,0 +1,14 @@
+# tmp files
+*.log
+*.swp
+
+# Python ignore
+*.pyc
+
+#linux ignore
+*.sh
+
+#my ignore
+key
+.vscode
+pseudo/
