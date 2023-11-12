@@ -1,0 +1,127 @@
+/* Start Global */
+*{
+    box-sizing: border-box;
+}
+body{
+    --main: #41b973;
+    --light-main: #eee;
+    --dark-main: #222;
+    font-family: 'Rubik', sans-serif;
+    position: relative;
+}
+.container{
+    margin: auto;
+    padding: 0 15px;
+}
+/* End Global */
+
+/* Start Header  */
+header {
+    background-color: #fff;
+}
+/* End Header  */
+
+/* Start Dashbord */
+header .dashbord {
+    background-color: var(--dark-main);
+}
+/* End Dashbord */
+
+/* Start Nav  */
+header nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+header nav .logo {
+    padding: 20px 0;
+    margin-right: 20px;
+    text-decoration: none;
+    color: var(--main);
+    text-transform: capitalize;
+    text-decoration: none;
+}
+
+header nav .nav-item,
+header nav .nav-item a {
+    text-transform: capitalize;
+    color: var(--dark-main);
+    text-decoration: none;
+    padding: 20px 10px;
+    cursor: pointer;
+}
+
+header nav .nav-item:hover,
+header nav .nav-item:hover > a {
+    color: #fff;
+    background-color: var(--main);
+}
+
+header nav .drop-down.active {
+    background-color: var(--dark-main);
+    color: #fff;
+}
+
+header nav .drop-down .drop-menu {
+    display: none;
+    position: absolute;
+    left: 15px;
+    top: 100%;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    background-color: var(--dark-main);
+    border-radius: 0 0 4px 4px;
+}
+
+header nav .drop-down .drop-menu li a {
+    display: inline-block;
+    color: #fff;
+    padding: 10px;
+}
+
+header nav .drop-down .drop-menu li:first-child a:hover {
+    border-radius: 0 0 0 4px;
+}
+
+header nav .drop-down .drop-menu li a:hover {
+    background-color: var(--main);
+}
+/* End Nav */
+
+/* Start quick access */
+.quick-access {
+    background-image: linear-gradient(90deg, #0b022f, #091140, #063058);
+    border-bottom: 1px solid var(--dark-main);
+    position: sticky;
+}
+
+.quick-access ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.quick-access ul li a {
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    color: var(--light-main);
+    transition: background 0.3s ease;
+    text-transform: capitalize;
+}
+
+.quick-access ul li a:hover {
+    background-color: var(--dark-main);
+}
+/* End quick access */

@@ -1,0 +1,24 @@
+/* Start content */
+.content {
+    height: calc(100vh - 98px);
+    background-image: url("../images/back.jpg");
+    background-size: cover;
+}
+
+.content .container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content .landing-text {
+    margin: 0;
+    padding: 0 20px 15px;
+    color: var(--light-main);
+    text-transform: capitalize;
+    font-size: 3em;
+    border-bottom: 2px solid var(--light-main);
+    text-shadow: 2px 2px 5px #000;
+}
+/* End content */

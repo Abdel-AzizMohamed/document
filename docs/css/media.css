@@ -1,0 +1,67 @@
+/* Start Global Media */
+@media (max-width: 767px){
+    .vis-xe-b{
+        display: block !important;
+    }
+    .vis-xe-i{
+        display: inline !important;
+    }
+    .vis-xe-ib{
+        display: inline-block !important;
+    }
+    .hid-xe{
+        display: none !important;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px){
+    .container{
+        width: 750px;
+    }
+    .vis-sm-i{
+        display: block !important;
+    }
+    .vis-sm-b{
+        display: inline !important;
+    }
+    .vis-sm-ib{
+        display: inline-block !important;
+    }
+    .hid-sm{
+        display: none !important;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px){
+    .container{
+        width: 970px;
+    }
+    .vis-md-i{
+        display: block !important;
+    }
+    .vis-md-b{
+        display: inline !important;
+    }
+    .vis-md-ib{
+        display: inline-block !important;
+    }
+    .hid-md{
+        display: none !important;
+    }
+}
+@media (min-width: 1200px){
+    .container{
+        width: 1170px;
+    }
+    .vis-lg-i{
+        display: block !important;
+    }
+    .vis-lg-b{
+        display: inline !important;
+    }
+    .vis-lg-ib{
+        display: inline-block !important;
+    }
+    .hid-lg{
+        display: none !important;
+    }
+}
+/* End Global Media */
