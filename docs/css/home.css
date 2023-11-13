@@ -1,18 +1,18 @@
-/* Start content */
-.content {
+/* Start Landing */
+section.landing {
     height: calc(100vh - 98px);
     background-image: url("../images/back.jpg");
     background-size: cover;
 }
 
-.content .container {
+section.landing .container {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.content .landing-text {
+section.landing .landing-text {
     margin: 0;
     padding: 0 20px 15px;
     color: var(--light-main);
@@ -21,4 +21,65 @@
     border-bottom: 2px solid var(--light-main);
     text-shadow: 2px 2px 5px #000;
 }
-/* End content */
+/* End Landing */
+
+/* Start tutorial item*/
+section.tutorial-item {
+    height: calc(75vh);
+    background-color: var(--light-main);
+}
+
+section.alt-color {
+    background-color: var(--dark-main);
+}
+
+section.tutorial-item .container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+section.tutorial-item .container h2 {
+    width: 100%;
+    text-align: center;
+    font-size: 3em;
+    color: var(--dark-main);
+    text-transform: capitalize;
+    margin: 0;
+}
+
+section.alt-color .container h2 {
+    color: var(--light-main);
+}
+
+section.tutorial-item .container p {
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    color: var(--dark-main);
+    text-transform: capitalize;
+    margin: 0;
+}
+
+section.alt-color .container p {
+    color: var(--light-main);
+}
+
+section.tutorial-item .container a {
+    background-color: var(--main);
+    padding: 10px 25px;
+    border: 1px solid var(--main);
+    border-radius: 4px;
+    color: var(--light-main);
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease;
+    font-size: 1.2em;
+}
+
+section.tutorial-item .container a:hover {
+    color: var(--main);
+    background-color: var(--light-main);
+}
+/* End tutorial item */
