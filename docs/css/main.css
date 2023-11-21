@@ -19,6 +19,7 @@ body{
 /* Start Header  */
 header {
     background-color: #fff;
+    position: relative;
 }
 /* End Header  */
 
@@ -67,10 +68,14 @@ header nav .drop-down.active {
     color: #fff;
 }
 
+header nav .drop-down i.fa-gear {
+    display: none;
+}
+
 header nav .drop-down .drop-menu {
     display: none;
     position: absolute;
-    left: 15px;
+    left: 0;
     top: 100%;
     width: 100%;
     list-style: none;

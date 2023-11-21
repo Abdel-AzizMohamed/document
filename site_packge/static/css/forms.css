@@ -1,0 +1,43 @@
+/* Start form */
+form label {
+    display: block;
+    color: var(--dark-main);
+    text-transform: capitalize;
+    margin: 15px 0 10px;
+    font-weight: 500;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="number"],
+form input[type="search"] {
+    padding: 5px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+form input[type="submit"] {
+    padding: 8px 16px;
+    margin: 20px 0;
+    border: 1px solid var(--main);
+    border-radius: 4px;
+    background-color: var(--main);
+    color: var(--light-main);
+    cursor: pointer;
+    transition: color 0.3s ease, background 0.3s ease;
+    text-transform: capitalize;
+}
+
+form input[type="submit"]:hover {
+    background-color: var(--light-main);
+    color: var(--main)
+}
+
+form textarea {
+    display: block;
+    margin: 20px 0;
+    width: 100%;
+    min-height: 400px;
+}
+/* End form */

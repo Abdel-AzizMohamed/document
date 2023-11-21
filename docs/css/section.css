@@ -1,0 +1,39 @@
+/* Start content */
+.content {
+    padding: 40px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+/* ُEnd content */
+
+/* Start form */
+.content form {
+    flex-basis: 35%;
+}
+/* ُEnd form */
+
+/* Start table */
+.content table {
+    flex-basis: 60%;
+    border: 1px solid #ccc;
+}
+
+.content table thead {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+.content table thead th {
+    padding: 5px 0;
+    text-transform: capitalize;
+}
+
+.content table tbody {
+    background-color: var(--light-main);
+}
+
+.content table tbody tr td {
+    padding: 20px;
+}
+/* ُEnd table */

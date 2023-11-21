@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Css Packges -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/regular.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/solid.min.css') }}" />
+    <!-- My Css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/frame-work.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/article.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/section.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/media.css') }}" />
+    {% if title %}
+      <title>{{title}} - CodeDocument</title>
+    {% else %}
+      <title>CodeDocument</title>
+    {% endif %}
+  </head>
+  <body>
+    <!-- ########## Start Header ########## -->
+    <header>
+      <div class="container">
+        <div class="dashbord"></div>
+        <nav>
+          <a class="logo" href="{{ url_for('home') }}">CodeDocument</a>
+          <li class="drop-down nav-item" id="dropDown">
+            <span class="hid-xe">Tutorials</span>
+            <i class="fa-solid fa-caret-down hid-xe" id="dropIcon"></i>
+            <i class="fa-solid fa-gear vis-xe-ib" id="dropIcon"></i>
+            <ul class="drop-menu" id="dropMenu">
+              {% for nav in navigation %}
+                <li><a href="#">{{ nav }}</a></li>
+              {% endfor %}
+              </ul>
+          </li>
+          <li class="nav-item hid-xe"><a href="#">about</a></li>
+        </nav>
+      </div>
+    </header>
+    <div class="quick-access hid-xe">
+      <div class="container">
+        <ul>
+          {% for nav in navigation %}
+            <li><a href="#">{{ nav }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <!-- ########## End Header ########## -->
+    {% block content %}{% endblock %}
+    <!-- ########## Start Footer ########## -->
+    <footer>
+      <div class="container">
+        <span>
+          &copy;Copyright 2023-2023 by abdelaziz mohamed. All Rights Reserved.
+        </span>
+      </div>
+    </footer>
+    <!-- ########## End Footer ########## -->
+    <script src="{{ url_for('static', filename='js/dropDown.js')}}"></script>
+  </body>
+</html>

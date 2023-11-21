@@ -1,3 +1,4 @@
+/* ############ Start Global ############ */
 /* Start Global Media */
 @media (max-width: 767px){
     .vis-xe-b{
@@ -65,3 +66,76 @@
     }
 }
 /* End Global Media */
+
+/* Start Header */
+@media (max-width: 767px){
+    header nav {
+        justify-content: space-between;
+    }
+    header nav .nav-item:hover,
+    header nav .nav-item:hover > a {
+        background-color: transparent;
+        color: var(--main);
+    }
+    
+    header nav .drop-down.active {
+        background-color: transparent;
+        color: var(--dark-main);
+    }
+}
+
+/* End Header */
+
+/* Start Footer */
+@media (max-width: 767px) {
+    footer span {
+        font-size: 0.8em;
+    }
+}
+
+/* End Footer */
+/* ############ End Global ############ */
+
+
+/* ############ Start Home ############ */
+/* Start Landing */
+@media (max-width: 767px) {
+    section.landing .landing-text {
+        font-size: 2em;
+    }
+    
+    section.tutorial-item .container h2 {
+        font-size: 2.5em;
+    }
+    
+    section.tutorial-item .container p {
+        font-size: 1.25em;
+    }
+}
+
+/* End Landing */
+/* ############ End Home ############ */
+
+
+/* ############ Start Article ############ */
+/* Start article aside */
+@media (max-width: 767px) {
+    .content aside {
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+}
+
+/* End article aside */
+
+/* Start Article Content */
+@media (max-width: 767px) {
+    .content article {
+        flex-basis: 100%;
+    }
+}
+
+/* End Article Content */
+/* ############ End Article ############ */

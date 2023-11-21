@@ -105,3 +105,24 @@ body {
     margin-bottom: 10px;
 }
 /* End article */
+
+/* Start toggle */
+div.side-toggle {
+    display: none;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    cursor: pointer;
+    background-color: var(--main);
+    color: var(--light-main);
+    padding: 6px 8px;
+    border: 1px solid var(--main);
+    border-radius: 4px;
+    transition: color 0.3s ease, background 0.3s ease;
+}
+
+div.side-toggle:hover {
+    color: var(--main);
+    background-color: var(--light-main);
+}
+/* End toggle */

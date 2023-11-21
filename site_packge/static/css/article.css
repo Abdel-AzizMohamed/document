@@ -1,7 +1,3 @@
-body {
-    height: 5000px;
-}
-
 /* Start content */
 .content {
     position: relative;
@@ -53,4 +49,76 @@ body {
 .content article {
     flex-basis: 73%;
 }
+
+.content article h1,
+.content article h2,
+.content article h3,
+.content article h4,
+.content article h5,
+.content article h6 {
+    font-weight: 400;
+    text-transform: capitalize;
+    color: var(--dark-main);
+    margin: 40px 0 20px;
+}
+
+.content article p {
+    color: var(--dark-main);
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+.content article p.info {
+    background-color: var(--main);
+    color: var(--light-main);
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.content article p.info::before {
+    content: "Note:";
+    text-transform: capitalize;
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+.content article p.danger {
+    background-color: var(--danger);
+    color: var(--light-main);
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.content article p.danger::before {
+    content: "warning:";
+    text-transform: capitalize;
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+.content article ul li {
+    font-weight: 300;
+    margin-bottom: 10px;
+}
 /* End article */
+
+/* Start toggle */
+div.side-toggle {
+    display: none;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    cursor: pointer;
+    background-color: var(--main);
+    color: var(--light-main);
+    padding: 6px 8px;
+    border: 1px solid var(--main);
+    border-radius: 4px;
+    transition: color 0.3s ease, background 0.3s ease;
+}
+
+div.side-toggle:hover {
+    color: var(--main);
+    background-color: var(--light-main);
+}
+/* End toggle */

@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Fonts -->
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
-    /> -->
+    />
     <!-- Css Packges -->
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/fontawesome.min.css" />
@@ -19,7 +19,8 @@
     <!-- My Css -->
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/frame-work.css" />
-    <link rel="stylesheet" href="css/article.css" />
+    <link rel="stylesheet" href="css/forms.css" />
+    <link rel="stylesheet" href="css/section.css" />
     <link rel="stylesheet" href="css/media.css" />
     <title>Document</title>
   </head>
@@ -57,49 +58,27 @@
     </div>
     <!-- ########## End Header ########## -->
 
-    <!-- ########## Start Article ########## -->
-    <div class="container content">
-      <aside class="hid-xe" id="toggle-item">
-        <ul class="tutorial-section">
-          <li class="tutorial-title">html basics</li>
-          <li class="tutorial-item"><a href="#">paragrah</a></li>
-          <li class="tutorial-item"><a href="#">headers</a></li>
-        </ul>
-        <ul class="tutorial-section">
-          <li class="tutorial-title">html forms</li>
-          <li class="tutorial-item"><a href="#">attributes</a></li>
-          <li class="tutorial-item"><a href="#">forms types</a></li>
-        </ul>
-      </aside>
-      <article>
-        <h1>html paragrah</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem harum id
-          ad minus tempora quibusdam nemo alias. Beatae, in provident!
-          Consequuntur mollitia nam harum quo assumenda similique quam expedita
-          autem!
-        </p>
-        <h2>what is html?</h2>
-        <ul>
-          <li>HTML stands for Hyper Text Markup Language</li>
-          <li>HTML is the standard markup language for creating Web pages</li>
-          <li>HTML describes the structure of a Web page</li>
-          <li>HTML consists of a series of elements</li>
-        </ul>
-        <h2>a simple html docment</h2>
-        <p class="info">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem harum id
-        </p>
-        <h3>Example Explained</h3>
-        <p class="danger">
-          Consequuntur mollitia nam harum quo assumenda similique quam expedita
-        </p>
-      </article>
+    <!-- ########## Start form ########## -->
+    <div class="container">
+      <form action="" method="POST">
+        <label>title</label>
+        <input type="text" placeholder="title that will be displayed" />
+        <label>Tutorial</label>
+        <select>
+          <option>-</option>
+          <option>python</option>
+        </select>
+        <label>Section</label>
+        <select>
+          <option>-</option>
+          <option>python</option>
+        </select>
+        <textarea></textarea>
+        <input type="submit" value="post" />
+      </form>
     </div>
-    <div class="side-toggle vis-xe-ib" id="toggle" data-active="#222222"  >
-      <i class="fa-solid fa-plus" id="toggle-icon"></i>
-    </div>
-    <!-- ########## End Article ########## -->
+    <!-- ########## End form ########## -->
+
     <!-- ########## Start Footer ########## -->
     <footer>
       <div class="container">
@@ -110,6 +89,5 @@
     </footer>
     <!-- ########## End Footer ########## -->
     <script src="js/dropDown.js"></script>
-    <script src="js/toggle.js"></script>
   </body>
 </html>

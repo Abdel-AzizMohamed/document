@@ -1,0 +1,46 @@
+{% extends "layout.html" %} {% block content %}
+<!-- ########## Start form ########## -->
+<div class="container content">
+  <form action="" method="POST">
+    {{ form.hidden_tag() }} 
+    {{ form.edit.label }}
+    {{ form.edit }}
+    {{ form.title.label }}
+    {{ form.title }}
+    {{ form.parent.label }}
+    {{ form.parent }}
+    {{ form.index.label }}
+    {{ form.index }}
+    {{ form.submit }}
+  </form>
+  <!-- ########## End form ########## -->
+
+  <!-- ########## Start table view ########## -->
+  <table>
+    <thead>
+      <tr>
+        <th>title</th>
+        <th>parent</th>
+        <th>index</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for tutorial in tutorials %}
+      <tr>
+        <td>{{ tutorial[1] }}</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      {% endfor %}
+      {% for section in sections %}
+      <tr>
+        <td>{{ section[0] }}</td>
+        <td>{{ section[1] }}</td>
+        <td>{{ section[2] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<!-- ########## End table view ########## -->
+{% endblock content %}

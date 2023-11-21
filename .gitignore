@@ -12,3 +12,5 @@
 key
 .vscode
 pseudo/
+venv/
+temp.py
