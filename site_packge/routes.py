@@ -4,6 +4,7 @@ from site_packge import app, db
 from site_packge.models import Tutorial, Section, Article
 from site_packge.forms import SectionForm
 
+
 @app.route("/")
 @app.route("/home", strict_slashes=False)
 def home():
@@ -18,22 +19,39 @@ def category():
     form = SectionForm()
 
     navigation = [item.title for item in Tutorial.query.order_by(Tutorial.id).all()]
-    tutorials = [(item.id, item.title) for item in Tutorial.query.order_by(Tutorial.id).all()]
-    sections = [(item.title, item.tutorial.title, item.index) for item in Section.query.order_by(Section.id, Section.index).all()]
-    
+    tutorials = [
+        (item.id, item.title) for item in Tutorial.query.order_by(Tutorial.id).all()
+    ]
+    sections = [
+        (item.title, item.tutorial.title, item.index)
+        for item in Section.query.order_by(Section.id, Section.index).all()
+    ]
+
     for option in tutorials:
         form.parent.choices.append(option)
 
     if form.validate_on_submit():
         if form.parent.data == "None":
-            record =  Tutorial(title=form.title.data)
+            record = Tutorial(title=form.title.data)
         else:
-            index = Section.query.filter(Section.tutorial_id == form.parent.data).count() + 1
-            record =  Section(title=form.title.data, tutorial_id=form.parent.data, index=index)
+            index = (
+                Section.query.filter(Section.tutorial_id == form.parent.data).count()
+                + 1
+            )
+            record = Section(
+                title=form.title.data, tutorial_id=form.parent.data, index=index
+            )
 
         db.session.add(record)
         db.session.commit()
         flash("Section has been created", "success")
         return redirect(url_for("home"))
 
-    return render_template("create_section.html", title="Create Section", navigation=navigation, form=form, tutorials=tutorials, sections=sections)
+    return render_template(
+        "create_section.html",
+        title="Create Section",
+        navigation=navigation,
+        form=form,
+        tutorials=tutorials,
+        sections=sections,
+    )
