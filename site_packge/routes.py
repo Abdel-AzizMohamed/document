@@ -2,7 +2,7 @@
 from flask import render_template, redirect, flash, url_for
 from site_packge import app, db
 from site_packge.models import Tutorial, Section, Article
-from site_packge.forms import SectionForm
+from site_packge.forms import SectionForm, PostForm
 
 
 @app.route("/")
@@ -55,3 +55,12 @@ def category():
         tutorials=tutorials,
         sections=sections,
     )
+
+
+@app.route("/post", methods=["POST", "GET"], strict_slashes=False)
+def post():
+    """Post page route"""
+    form = PostForm()
+    navigation = [item.title for item in Tutorial.query.order_by(Tutorial.id).all()]
+
+    return render_template("post.html", title="Post", navigation=navigation, form=form)

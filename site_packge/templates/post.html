@@ -1,93 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Css Packges -->
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/fontawesome.min.css" />
-    <link rel="stylesheet" href="css/regular.min.css" />
-    <link rel="stylesheet" href="css/solid.min.css" />
-    <!-- My Css -->
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/frame-work.css" />
-    <link rel="stylesheet" href="css/forms.css" />
-    <link rel="stylesheet" href="css/section.css" />
-    <link rel="stylesheet" href="css/media.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <!-- ########## Start Header ########## -->
-    <header>
-      <div class="container">
-        <div class="dashbord"></div>
-        <nav>
-          <a class="logo" href="index.html">Document</a>
-          <li class="drop-down nav-item" id="dropDown">
-            <span class="hid-xe">Tutorials</span>
-            <i class="fa-solid fa-caret-down hid-xe" id="dropIcon"></i>
-            <i class="fa-solid fa-gear vis-xe-ib" id="dropIcon"></i>
-            <ul class="drop-menu" id="dropMenu">
-              <li><a href="#">Python</a></li>
-              <li><a href="article.html">html</a></li>
-              <li><a href="#">css</a></li>
-              <li><a href="#">javascript</a></li>
-            </ul>
-          </li>
-          <li class="nav-item hid-xe"><a href="#">about</a></li>
-        </nav>
-      </div>
-    </header>
-    <div class="quick-access hid-xe">
-      <div class="container">
-        <ul>
-          <li><a href="#">python</a></li>
-          <li><a href="article.html">html</a></li>
-          <li><a href="#">css</a></li>
-          <li><a href="#">javascript</a></li>
-        </ul>
-      </div>
-    </div>
-    <!-- ########## End Header ########## -->
-
-    <!-- ########## Start form ########## -->
-    <div class="container">
-      <form action="" method="POST">
-        <label>title</label>
-        <input type="text" placeholder="title that will be displayed" />
-        <label>Tutorial</label>
-        <select>
-          <option>-</option>
-          <option>python</option>
-        </select>
-        <label>Section</label>
-        <select>
-          <option>-</option>
-          <option>python</option>
-        </select>
-        <textarea></textarea>
-        <input type="submit" value="post" />
-      </form>
-    </div>
-    <!-- ########## End form ########## -->
-
-    <!-- ########## Start Footer ########## -->
-    <footer>
-      <div class="container">
-        <span>
-          &copy;Copyright 2023-2023 by abdelaziz mohamed. All Rights Reserved.
-        </span>
-      </div>
-    </footer>
-    <!-- ########## End Footer ########## -->
-    <script src="js/dropDown.js"></script>
-  </body>
-</html>
+{% extends "layout.html" %} {% block content %}
+<!-- ########## Start form ########## -->
+<div class="container">
+  <form action="" method="POST">
+    {{ form.hidden_tag() }} 
+    {{ form.title.label }}
+    {{ form.title }}
+    {{ form.tutorial.label }}
+    {{ form.tutorial }}
+    {{ form.section.label }}
+    {{ form.section }}
+    {{ form.content.label }}
+    {{ form.content }}
+    {{ form.submit }}
+  </form>
+</div>
+<!-- ########## End form ########## -->
+{% endblock content %}
