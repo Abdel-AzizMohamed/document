@@ -1,5 +1,5 @@
 """Contains all the site routes"""
-from flask import render_template, redirect, flash, url_for
+from flask import render_template, redirect, flash, url_for, jsonify
 from site_packge import app, db
 from site_packge.models import Tutorial, Section, Article
 from site_packge.forms import SectionForm, PostForm
@@ -57,10 +57,24 @@ def category():
     )
 
 
-@app.route("/post", methods=["POST", "GET"], strict_slashes=False)
-def post():
+@app.route("/create_post", methods=["POST", "GET"], strict_slashes=False)
+def create_post():
     """Post page route"""
     form = PostForm()
     navigation = [item.title for item in Tutorial.query.order_by(Tutorial.id).all()]
+    
+    tutorials = [
+        (item.id, item.title) for item in Tutorial.query.order_by(Tutorial.id).all()
+    ]
+    for option in tutorials:
+        form.tutorial.choices.append(option)
 
     return render_template("post.html", title="Post", navigation=navigation, form=form)
+
+
+@app.route("/api/v1.0/sections/<int:parent_id>", methods=["POST", "GET"], strict_slashes=False)
+def get_sections(parent_id):
+    """Api to get all sections from tutorial id"""
+    sections = [{item.title: item.id} for item in Section.query.filter(Section.tutorial_id == parent_id).all()]
+
+    return jsonify(sections)

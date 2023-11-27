@@ -18,7 +18,7 @@ class PostForm(FlaskForm):
     """Define create post form"""
 
     title = StringField("Title", validators=[DataRequired()])
-    tutorial = SelectField("tutorial", choices=[("None", "-")])
-    section = SelectField("section", choices=[("None", "-")])
+    tutorial = SelectField("tutorial", choices=[("None", "-")], id="category")
+    section = SelectField("section", choices=[("None", "-")], id="sub-category")
     content = TextAreaField("Content", validators=[DataRequired()])
     submit = SubmitField("Post")
