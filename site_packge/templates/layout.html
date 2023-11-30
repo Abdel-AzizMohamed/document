@@ -12,22 +12,55 @@
       rel="stylesheet"
     /> -->
     <!-- Css Packges -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome.min.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/regular.min.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/solid.min.css') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/normalize.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/fontawesome.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/regular.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/solid.min.css') }}"
+    />
     <!-- My Css -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/frame-work.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/article.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/section.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/media.css') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/frame-work.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/home.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/forms.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/article.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/section.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/media.css') }}"
+    />
     {% if title %}
-      <title>{{title}} - CodeDocument</title>
+    <title>{{title}} - CodeDocument</title>
     {% else %}
-      <title>CodeDocument</title>
+    <title>CodeDocument</title>
     {% endif %}
   </head>
   <body>
@@ -43,9 +76,9 @@
             <i class="fa-solid fa-gear vis-xe-ib" id="dropIcon"></i>
             <ul class="drop-menu" id="dropMenu">
               {% for nav in navigation %}
-                <li><a href="#">{{ nav }}</a></li>
+              <li><a href="#">{{ nav }}</a></li>
               {% endfor %}
-              </ul>
+            </ul>
           </li>
           <li class="nav-item hid-xe"><a href="#">about</a></li>
         </nav>
@@ -55,7 +88,7 @@
       <div class="container">
         <ul>
           {% for nav in navigation %}
-            <li><a href="#">{{ nav }}</a></li>
+          <li><a href="#">{{ nav }}</a></li>
           {% endfor %}
         </ul>
       </div>
@@ -72,5 +105,6 @@
     </footer>
     <!-- ########## End Footer ########## -->
     <script src="{{ url_for('static', filename='js/dropDown.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/getCategorys.js')}}"></script>
   </body>
 </html>
