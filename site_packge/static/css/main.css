@@ -23,11 +23,33 @@ header {
 }
 /* End Header  */
 
-/* Start Dashbord */
+/* Start Dashbord  */
 header .dashbord {
     background-color: var(--dark-main);
+    border: 2px solid var(--dark-main);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
-/* End Dashbord */
+
+header .dashbord li a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--light-main);
+    text-transform: capitalize;
+    margin-right: 5px;
+    padding: 8px 12px;
+    transition: color 0.3s ease, background 0.3s ease;
+}
+
+header .dashbord li a:hover {
+    color: var(--dark-main);
+    background-color: var(--light-main);
+}
+/* End Dashbord  */
 
 /* Start Nav  */
 header nav {

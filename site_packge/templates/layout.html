@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Fonts -->
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
-    /> -->
+    />
     <!-- Css Packges -->
     <link
       rel="stylesheet"
@@ -66,8 +66,11 @@
   <body>
     <!-- ########## Start Header ########## -->
     <header>
+      <ul class="dashbord">
+        <li><a href="{{url_for('category')}}">Add category</a></li>
+        <li><a href="{{url_for('create_post')}}">create post</a></li>
+      </ul>
       <div class="container">
-        <div class="dashbord"></div>
         <nav>
           <a class="logo" href="{{ url_for('home') }}">CodeDocument</a>
           <li class="drop-down nav-item" id="dropDown">
@@ -75,8 +78,13 @@
             <i class="fa-solid fa-caret-down hid-xe" id="dropIcon"></i>
             <i class="fa-solid fa-gear vis-xe-ib" id="dropIcon"></i>
             <ul class="drop-menu" id="dropMenu">
-              {% for nav in navigation %}
-              <li><a href="#">{{ nav }}</a></li>
+              {% for name, item in navigation.items() %}
+              <li>
+                <a
+                  href="{{ url_for('article', tutorial_id=item.tutorial_id, article_id=item.article_id)}}"
+                  >{{ name }}</a
+                >
+              </li>
               {% endfor %}
             </ul>
           </li>
@@ -87,8 +95,13 @@
     <div class="quick-access hid-xe">
       <div class="container">
         <ul>
-          {% for nav in navigation %}
-          <li><a href="#">{{ nav }}</a></li>
+          {% for name, item in navigation.items() %}
+          <li>
+            <a
+              href="{{ url_for('article', tutorial_id=item.tutorial_id, article_id=item.article_id)}}"
+              >{{ name }}</a
+            >
+          </li>
           {% endfor %}
         </ul>
       </div>

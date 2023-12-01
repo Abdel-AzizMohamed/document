@@ -24,8 +24,8 @@ category.onchange = function () {
     })
     .then((data) => {
       for (let i = 0; i < data.length; i++) {
-        sub_id = i + 1;
-        sub_text = data[i][sub_id];
+        sub_id = data[i][0];
+        sub_text = data[i][1];
 
         sub_element = document.createElement("option");
         sub_element.value = sub_id;

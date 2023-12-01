@@ -5,11 +5,34 @@ from site_packge.models import Tutorial, Section, Article
 from site_packge.forms import SectionForm, PostForm
 
 
+def get_navigation() -> dict:
+    """Get navigation menu data"""
+    navigation = {}
+
+    for item in Tutorial.query.order_by(Tutorial.id).all():
+        first_section = Section.query.filter(Section.tutorial_id == item.id).first()
+
+        if first_section is None:
+            continue
+
+        first_aricle = Article.query.filter(
+            Article.section_id == first_section.id
+        ).first()
+
+        if first_aricle is None:
+            continue
+
+        navigation[item.title] = {"tutorial_id": item.id, "article_id": first_aricle.id}
+
+    return navigation
+
+
 @app.route("/")
 @app.route("/home", strict_slashes=False)
 def home():
     """Home page route"""
-    navigation = [item.title for item in Tutorial.query.order_by(Tutorial.id).all()]
+    navigation = get_navigation()
+
     return render_template("index.html", title="Home", navigation=navigation)
 
 
@@ -18,7 +41,7 @@ def category():
     """Create Sections route"""
     form = SectionForm()
 
-    navigation = [item.title for item in Tutorial.query.order_by(Tutorial.id).all()]
+    navigation = get_navigation()
     tutorials = [
         (item.id, item.title) for item in Tutorial.query.order_by(Tutorial.id).all()
     ]
@@ -61,7 +84,7 @@ def category():
 def create_post():
     """Post page route"""
     form = PostForm()
-    navigation = [item.title for item in Tutorial.query.order_by(Tutorial.id).all()]
+    navigation = get_navigation()
 
     tutorials = [
         (item.id, item.title) for item in Tutorial.query.order_by(Tutorial.id).all()
@@ -91,9 +114,44 @@ def create_post():
 )
 def get_sections(parent_id):
     """Api to get all sections from tutorial id"""
-    sections = [
-        {item.id: item.title}
-        for item in Section.query.filter(Section.tutorial_id == parent_id).all()
-    ]
+    sections = Section.query.filter(Section.tutorial_id == parent_id).all()
 
-    return jsonify(sections)
+    sections_list = []
+
+    for section in sections:
+        sections_list.append((section.id, section.title))
+
+    return jsonify(sections_list)
+
+
+@app.route(
+    "/api/v1.0/article/<int:article_id>", methods=["POST", "GET"], strict_slashes=False
+)
+def get_article(article_id):
+    """Api to get an article from its id"""
+    content = Article.query.filter(Article.id == article_id).first().content
+
+    return content
+
+
+@app.route("/article/<int:tutorial_id>/<int:article_id>", strict_slashes=False)
+def article(tutorial_id, article_id):
+    """Define Article page"""
+    navigation = get_navigation()
+    sections = Section.query.filter(Section.tutorial_id == tutorial_id).all()
+
+    side_data = {}
+
+    for section in sections:
+        side_data[section.title] = []
+        articles = Article.query.filter(Article.section_id == section.id).all()
+        for post in articles:
+            side_data.get(section.title).append((post.title, post.id))
+
+    return render_template(
+        "article.html",
+        title="Article",
+        navigation=navigation,
+        tutorial_id=tutorial_id,
+        side_data=side_data,
+    )
