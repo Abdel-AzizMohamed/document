@@ -4,8 +4,8 @@ from wtforms import IntegerField, StringField, SelectField, SubmitField, TextAre
 from wtforms.validators import DataRequired
 
 
-class SectionForm(FlaskForm):
-    """Define create section form"""
+class CategoryForm(FlaskForm):
+    """Define category form"""
 
     edit = StringField("Edit")
     title = StringField("Title", validators=[DataRequired()])
@@ -14,11 +14,13 @@ class SectionForm(FlaskForm):
     submit = SubmitField("Add")
 
 
-class PostForm(FlaskForm):
-    """Define create post form"""
+class ArticleForm(FlaskForm):
+    """Define article form"""
 
     title = StringField("Title", validators=[DataRequired()])
-    tutorial = SelectField("tutorial", choices=[("None", "-")], id="category")
-    section = SelectField("section", choices=[("None", "-")], id="sub-category")
+    category = SelectField("category", choices=[("None", "-")], id="category")
+    sub_category = SelectField(
+        "Sub Category", choices=[("None", "-")], id="sub-category"
+    )
     content = TextAreaField("Content", validators=[DataRequired()])
     submit = SubmitField("Post")

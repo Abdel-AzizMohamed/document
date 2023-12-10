@@ -2,7 +2,7 @@
 from flask import render_template, redirect, flash, url_for, jsonify, request
 from site_packge import app, db
 from site_packge.models import Category, SubCategory, Article
-from site_packge.forms import SectionForm, PostForm
+from site_packge.forms import CategoryForm, ArticleForm
 
 
 def get_navigation() -> dict:
@@ -44,7 +44,7 @@ def home() -> str:
 @app.route("/create_category", methods=["POST", "GET"], strict_slashes=False)
 def create_category():
     """Create categories route"""
-    form = SectionForm()
+    form = CategoryForm()
 
     navigation = get_navigation()
     categories = [
@@ -87,23 +87,23 @@ def create_category():
     )
 
 
-@app.route("/create_post", methods=["POST", "GET"], strict_slashes=False)
-def create_post():
+@app.route("/create_article", methods=["POST", "GET"], strict_slashes=False)
+def create_article():
     """Post page route"""
-    form = PostForm()
+    form = ArticleForm()
     navigation = get_navigation()
 
     categories = [
         (item.id, item.title) for item in Category.query.order_by(Category.id).all()
     ]
     for category in categories:
-        form.tutorial.choices.append(category)
+        form.category.choices.append(category)
 
     if request.method == "POST":
         article = Article(
             title=form.title.data,
             content=form.content.data,
-            sub_category_id=form.section.data,
+            sub_category_id=form.sub_category.data,
         )
 
         db.session.add(article)
@@ -111,7 +111,9 @@ def create_post():
         flash("Post has been created!", "succes")
         return redirect(url_for("home"))
 
-    return render_template("post.html", title="Post", navigation=navigation, form=form)
+    return render_template(
+        "create_article.html", title="Create Article", navigation=navigation, form=form
+    )
 
 
 @app.route(
