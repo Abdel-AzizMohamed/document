@@ -67,7 +67,7 @@
     <!-- ########## Start Header ########## -->
     <header>
       <ul class="dashbord">
-        <li><a href="{{url_for('category')}}">Add category</a></li>
+        <li><a href="{{url_for('create_category')}}">Add category</a></li>
         <li><a href="{{url_for('create_post')}}">create post</a></li>
       </ul>
       <div class="container">
@@ -81,7 +81,7 @@
               {% for name, item in navigation.items() %}
               <li>
                 <a
-                  href="{{ url_for('article', tutorial_id=item.tutorial_id, article_id=item.article_id)}}"
+                  href="{{ url_for('article', category_id=item.category_id, article_id=item.article_id)}}"
                   >{{ name }}</a
                 >
               </li>
@@ -98,7 +98,7 @@
           {% for name, item in navigation.items() %}
           <li>
             <a
-              href="{{ url_for('article', tutorial_id=item.tutorial_id, article_id=item.article_id)}}"
+              href="{{ url_for('article', category_id=item.category_id, article_id=item.article_id)}}"
               >{{ name }}</a
             >
           </li>

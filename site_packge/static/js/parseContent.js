@@ -1,4 +1,8 @@
-let content_container = document.getElementById("article");
+let content_container = document.getElementById("article"),
+  article_elements = [],
+  element,
+  paragrah = document.createElement("p"),
+  unlist = document.createElement("ul");
 
 function parse_list(element) {
   let text = element.slice(1, element.length),
@@ -48,12 +52,7 @@ function parseContent() {
       return response.text();
     })
     .then((data) => {
-      let article_elements = [],
-        article_split = data.split("\n"),
-        element,
-        paragrah = document.createElement("p"),
-        unlist = document.createElement("ul");
-
+      let article_split = data.split("\n");
       for (let i = 0; i < article_split.length; i++) {
         if (article_split[i] == "\r") continue;
 

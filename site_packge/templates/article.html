@@ -2,13 +2,13 @@
 <!-- ########## Start Article ########## -->
 <div class="container content">
   <aside class="hid-xe" id="toggle-item">
-    {% for section, data in side_data.items() %}
+    {% for sub_category, data in side_data.items() %}
     <ul class="tutorial-section">
-      <li class="tutorial-title">{{ section }}</li>
+      <li class="tutorial-title">{{ sub_category }}</li>
       {% for article in data %}
       <li class="tutorial-item">
         <a
-          href="{{ url_for('article', tutorial_id=tutorial_id, article_id=article[1]) }}"
+          href="{{ url_for('article', category_id=category_id, article_id=article[1]) }}"
           >{{ article[0] }}</a
         >
       </li>

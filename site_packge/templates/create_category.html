@@ -2,16 +2,9 @@
 <!-- ########## Start form ########## -->
 <div class="container content">
   <form action="" method="POST">
-    {{ form.hidden_tag() }} 
-    {{ form.edit.label }}
-    {{ form.edit }}
-    {{ form.title.label }}
-    {{ form.title }}
-    {{ form.parent.label }}
-    {{ form.parent }}
-    {{ form.index.label }}
-    {{ form.index }}
-    {{ form.submit }}
+    {{ form.hidden_tag() }} {{ form.edit.label }} {{ form.edit }} {{
+    form.title.label }} {{ form.title }} {{ form.parent.label }} {{ form.parent
+    }} {{ form.index.label }} {{ form.index }} {{ form.submit }}
   </form>
   <!-- ########## End form ########## -->
 
@@ -25,18 +18,17 @@
       </tr>
     </thead>
     <tbody>
-      {% for tutorial in tutorials %}
+      {% for category in categories %}
       <tr>
-        <td>{{ tutorial[1] }}</td>
+        <td>{{ category[1] }}</td>
         <td>-</td>
         <td>-</td>
       </tr>
-      {% endfor %}
-      {% for section in sections %}
+      {% endfor %} {% for sub_category in sub_categories %}
       <tr>
-        <td>{{ section[0] }}</td>
-        <td>{{ section[1] }}</td>
-        <td>{{ section[2] }}</td>
+        <td>{{ sub_category[0] }}</td>
+        <td>{{ sub_category[1] }}</td>
+        <td>{{ sub_category[2] }}</td>
       </tr>
       {% endfor %}
     </tbody>

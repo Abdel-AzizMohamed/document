@@ -1,7 +1,7 @@
 """Contains all the site routes"""
 from flask import render_template, redirect, flash, url_for, jsonify, request
 from site_packge import app, db
-from site_packge.models import Tutorial, Section, Article
+from site_packge.models import Category, SubCategory, Article
 from site_packge.forms import SectionForm, PostForm
 
 
@@ -9,60 +9,67 @@ def get_navigation() -> dict:
     """Get navigation menu data"""
     navigation = {}
 
-    for item in Tutorial.query.order_by(Tutorial.id).all():
-        first_section = Section.query.filter(Section.tutorial_id == item.id).first()
+    for item in Category.query.order_by(Category.id).all():
+        first_section = SubCategory.query.filter(
+            SubCategory.category_id == item.id
+        ).first()
 
         if first_section is None:
             continue
 
         first_aricle = Article.query.filter(
-            Article.section_id == first_section.id
+            Article.sub_category_id == first_section.id
         ).first()
 
         if first_aricle is None:
             continue
 
-        navigation[item.title] = {"tutorial_id": item.id, "article_id": first_aricle.id}
+        navigation[item.title] = {
+            "category_id": item.id,
+            "article_id": first_aricle.id,
+        }
 
     return navigation
 
 
 @app.route("/")
 @app.route("/home", strict_slashes=False)
-def home():
+def home() -> str:
     """Home page route"""
     navigation = get_navigation()
 
     return render_template("index.html", title="Home", navigation=navigation)
 
 
-@app.route("/create_section", methods=["POST", "GET"], strict_slashes=False)
-def category():
-    """Create Sections route"""
+@app.route("/create_category", methods=["POST", "GET"], strict_slashes=False)
+def create_category():
+    """Create categories route"""
     form = SectionForm()
 
     navigation = get_navigation()
-    tutorials = [
-        (item.id, item.title) for item in Tutorial.query.order_by(Tutorial.id).all()
+    categories = [
+        (item.id, item.title) for item in Category.query.order_by(Category.id).all()
     ]
-    sections = [
-        (item.title, item.tutorial.title, item.index)
-        for item in Section.query.order_by(Section.id, Section.index).all()
+    sub_categories = [
+        (item.title, item.category.title, item.index)
+        for item in SubCategory.query.order_by(SubCategory.id, SubCategory.index).all()
     ]
 
-    for option in tutorials:
-        form.parent.choices.append(option)
+    for category in categories:
+        form.parent.choices.append(category)
 
     if form.validate_on_submit():
         if form.parent.data == "None":
-            record = Tutorial(title=form.title.data)
+            record = Category(title=form.title.data)
         else:
             index = (
-                Section.query.filter(Section.tutorial_id == form.parent.data).count()
+                SubCategory.query.filter(
+                    SubCategory.category_id == form.parent.data
+                ).count()
                 + 1
             )
-            record = Section(
-                title=form.title.data, tutorial_id=form.parent.data, index=index
+            record = SubCategory(
+                title=form.title.data, category_id=form.parent.data, index=index
             )
 
         db.session.add(record)
@@ -71,12 +78,12 @@ def category():
         return redirect(url_for("home"))
 
     return render_template(
-        "create_section.html",
+        "create_category.html",
         title="Create Section",
         navigation=navigation,
         form=form,
-        tutorials=tutorials,
-        sections=sections,
+        categories=categories,
+        sub_categories=sub_categories,
     )
 
 
@@ -86,19 +93,17 @@ def create_post():
     form = PostForm()
     navigation = get_navigation()
 
-    tutorials = [
-        (item.id, item.title) for item in Tutorial.query.order_by(Tutorial.id).all()
+    categories = [
+        (item.id, item.title) for item in Category.query.order_by(Category.id).all()
     ]
-    for option in tutorials:
-        form.tutorial.choices.append(option)
-
-    print(form.section.data)
+    for category in categories:
+        form.tutorial.choices.append(category)
 
     if request.method == "POST":
         article = Article(
             title=form.title.data,
             content=form.content.data,
-            section_id=form.section.data,
+            sub_category_id=form.section.data,
         )
 
         db.session.add(article)
@@ -112,16 +117,18 @@ def create_post():
 @app.route(
     "/api/v1.0/sections/<int:parent_id>", methods=["POST", "GET"], strict_slashes=False
 )
-def get_sections(parent_id):
-    """Api to get all sections from tutorial id"""
-    sections = Section.query.filter(Section.tutorial_id == parent_id).all()
+def get_sub_categories(parent_id):
+    """Api to get all sub categories from category id"""
+    sub_categories = SubCategory.query.filter(
+        SubCategory.category_id == parent_id
+    ).all()
 
-    sections_list = []
+    matched_categories = []
 
-    for section in sections:
-        sections_list.append((section.id, section.title))
+    for sub_category in sub_categories:
+        matched_categories.append((sub_category.id, sub_category.title))
 
-    return jsonify(sections_list)
+    return jsonify(matched_categories)
 
 
 @app.route(
@@ -134,24 +141,28 @@ def get_article(article_id):
     return content
 
 
-@app.route("/article/<int:tutorial_id>/<int:article_id>", strict_slashes=False)
-def article(tutorial_id, article_id):
+@app.route("/article/<int:category_id>/<int:article_id>", strict_slashes=False)
+def article(category_id, article_id):
     """Define Article page"""
     navigation = get_navigation()
-    sections = Section.query.filter(Section.tutorial_id == tutorial_id).all()
+    sub_categories = SubCategory.query.filter(
+        SubCategory.category_id == category_id
+    ).all()
 
     side_data = {}
 
-    for section in sections:
-        side_data[section.title] = []
-        articles = Article.query.filter(Article.section_id == section.id).all()
+    for sub_category in sub_categories:
+        side_data[sub_category.title] = []
+        articles = Article.query.filter(
+            Article.sub_category_id == sub_category.id
+        ).all()
         for post in articles:
-            side_data.get(section.title).append((post.title, post.id))
+            side_data.get(sub_category.title).append((post.title, post.id))
 
     return render_template(
         "article.html",
         title="Article",
         navigation=navigation,
-        tutorial_id=tutorial_id,
+        category_id=category_id,
         side_data=side_data,
     )
