@@ -1,21 +1,18 @@
 let category = document.getElementById("category"),
-  subCategory = document.getElementById("sub-category");
+  subCategory = document.getElementById("sub-category"),
+  url = "/api/v1.0/sections";
 
 category.onchange = function () {
-  let url = "/api/v1.0/sections",
-    category_value = category.value;
-
   subCategory.textContent = "";
 
   sub_element = document.createElement("option");
   sub_element.value = "None";
   sub_element.textContent = "-";
-
   subCategory.appendChild(sub_element);
 
-  if (category_value == "None") return;
+  if (category.value == "None") return;
 
-  fetch(`${url}/${category_value}`)
+  fetch(`${url}/${category.value}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
