@@ -100,6 +100,13 @@
     font-weight: 300;
     margin-bottom: 10px;
 }
+
+.content article .code-format {
+    background-color: var(--light-main);
+    border-left: 4px solid var(--main);
+    padding: 8px 14px;
+    line-height: 1.8;
+}
 /* End article */
 
 /* Start toggle */
