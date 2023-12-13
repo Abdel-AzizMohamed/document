@@ -85,6 +85,18 @@ function parse_code(elements, current_index) {
   return [code, i];
 }
 
+function parse_link(element) {
+  let text = element.slice(1, element.length).split("]")[0],
+    link_split = element.split("]")[1],
+    link = link_split.slice(1, link_split.length - 1),
+    link_element = document.createElement("a");
+
+  link_element.textContent = text;
+  link_element.setAttribute("href", link);
+
+  return link_element;
+}
+
 fetch(`${url}${article_id}`)
   .then((response) => {
     if (!response.ok) {
@@ -104,6 +116,7 @@ fetch(`${url}${article_id}`)
         article_elements.push(parse_note(element, "info"));
       else if (element[0] == "!")
         article_elements.push(parse_note(element, "danger"));
+      else if (element[0] == "[") article_elements.push(parse_link(element));
       else if (element.slice(0, 3) == "```") {
         let parsed_code = parse_code(article_split, i);
         article_elements.push(parsed_code[0]);
