@@ -87,14 +87,26 @@ function parse_code(elements, current_index) {
 
 function parse_link(element) {
   let text = element.slice(1, element.length).split("]")[0],
-    link_split = element.split("]")[1],
-    link = link_split.slice(1, link_split.length - 1),
-    link_element = document.createElement("a");
+    linkSplit = element.split("]")[1],
+    link = linkSplit.slice(1, linkSplit.length - 1),
+    linkElement = document.createElement("a");
 
-  link_element.textContent = text;
-  link_element.setAttribute("href", link);
+  linkElement.textContent = text;
+  linkElement.setAttribute("href", link);
 
-  return link_element;
+  return linkElement;
+}
+
+function parse_image(element) {
+  let altText = element.slice(1, element.length).split("]")[0],
+    linkSplit = element.split("]")[1],
+    link = linkSplit.slice(1, linkSplit.length - 1),
+    imgElement = document.createElement("img");
+
+  imgElement.setAttribute("alt", altText);
+  imgElement.setAttribute("src", link);
+
+  return imgElement;
 }
 
 fetch(`${url}${article_id}`)
@@ -112,11 +124,13 @@ fetch(`${url}${article_id}`)
       let element = article_split[i].replaceAll("\r", "");
 
       if (element[0] == "#") article_elements.push(parse_heading(element));
+      else if (element[0] == "!" && element[1] == "[")
+        article_elements.push(parse_image(element));
+      else if (element[0] == "[") article_elements.push(parse_link(element));
       else if (element[0] == "@")
         article_elements.push(parse_note(element, "info"));
       else if (element[0] == "!")
         article_elements.push(parse_note(element, "danger"));
-      else if (element[0] == "[") article_elements.push(parse_link(element));
       else if (element.slice(0, 3) == "```") {
         let parsed_code = parse_code(article_split, i);
         article_elements.push(parsed_code[0]);

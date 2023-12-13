@@ -107,6 +107,35 @@
     padding: 8px 14px;
     line-height: 1.8;
 }
+
+.content article img {
+    width: 100%;
+    margin: 30px 0;
+}
+
+.content article a {
+    color: var(--main);
+    text-transform: capitalize;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    padding: 5px 0;
+}
+
+.content article a::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--main);
+    transition: width 0.3s ease;
+}
+
+.content article a:hover::before {
+    width: 100%;
+}
 /* End article */
 
 /* Start toggle */
