@@ -143,6 +143,12 @@ def get_article(article_id):
     return content
 
 
+@app.route("/api/v1.0/image", methods=["POST", "GET"], strict_slashes=False)
+def get_image():
+    """Api to get local image"""
+    return url_for("static", filename=request.get_data().decode("utf-8"))
+
+
 @app.route("/article/<int:category_id>/<int:article_id>", strict_slashes=False)
 def article(category_id, article_id):
     """Define Article page"""

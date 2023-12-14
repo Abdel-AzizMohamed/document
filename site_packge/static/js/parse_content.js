@@ -100,12 +100,24 @@ function parse_link(element) {
 function parse_image(element) {
   let altText = element.slice(1, element.length).split("]")[0],
     linkSplit = element.split("]")[1],
-    link = linkSplit.slice(1, linkSplit.length - 1),
+    linkPath = linkSplit.slice(1, linkSplit.length - 1),
     imgElement = document.createElement("img");
 
-  imgElement.setAttribute("alt", altText);
-  imgElement.setAttribute("src", link);
+  if (linkPath.search("https") == -1) {
+    fetch(`/api/v1.0/image`, { method: "POST", body: linkPath })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.text();
+      })
+      .then((data) => imgElement.setAttribute("src", data))
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  } else imgElement.setAttribute("src", linkPath);
 
+  imgElement.setAttribute("alt", altText);
   return imgElement;
 }
 
