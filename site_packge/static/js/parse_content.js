@@ -132,8 +132,11 @@ fetch(`${url}${article_id}`)
     let article_split = data.split("\n");
 
     for (let i = 0; i < article_split.length; i++) {
-      if (article_split[i] == "\r") continue;
+      if (article_split[i] == "\r" || !article_split[i]) continue;
       let element = article_split[i].replaceAll("\r", "");
+      console.log(article_split[i]);
+      console.log(i);
+      console.log(element);
 
       if (element[0] == "#") article_elements.push(parse_heading(element));
       else if (element[0] == "!" && element[1] == "[")
