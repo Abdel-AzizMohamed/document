@@ -1,8 +1,8 @@
 """Contains all the site routes"""
 from flask import render_template, redirect, flash, url_for, jsonify, request
-from site_packge import app, db
-from site_packge.models import Category, SubCategory, Article
-from site_packge.forms import CategoryForm, ArticleForm
+from site_package import app, db
+from site_package.models import Category, SubCategory, Article
+from site_package.forms import CategoryForm, ArticleForm
 
 
 def get_navigation() -> dict:
@@ -17,16 +17,16 @@ def get_navigation() -> dict:
         if first_section is None:
             continue
 
-        first_aricle = Article.query.filter(
+        first_article = Article.query.filter(
             Article.sub_category_id == first_section.id
         ).first()
 
-        if first_aricle is None:
+        if first_article is None:
             continue
 
         navigation[item.title] = {
             "category_id": item.id,
-            "article_id": first_aricle.id,
+            "article_id": first_article.id,
         }
 
     return navigation
@@ -108,11 +108,21 @@ def create_article():
 
         db.session.add(article)
         db.session.commit()
-        flash("Post has been created!", "succes")
+        flash("Post has been created!", "success")
         return redirect(url_for("home"))
 
     return render_template(
         "create_article.html", title="Create Article", navigation=navigation, form=form
+    )
+
+
+@app.route("/view_article", methods=["POST", "GET"], strict_slashes=False)
+def view_article() -> str:
+    """Define articles view route"""
+    navigation = get_navigation()
+
+    return render_template(
+        "view_article.html", title="View Articles", navigation=navigation
     )
 
 

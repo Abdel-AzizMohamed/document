@@ -17,6 +17,11 @@
 .content table {
     flex-basis: 60%;
     border: 1px solid #ccc;
+    text-align: left;
+}
+
+.content table.table-full {
+    flex-basis: 100%;
 }
 
 .content table thead {
@@ -25,7 +30,7 @@
 }
 
 .content table thead th {
-    padding: 5px 0;
+    padding: 10px 20px;
     text-transform: capitalize;
 }
 
@@ -35,5 +40,30 @@
 
 .content table tbody tr td {
     padding: 20px;
+    position: relative;
+    color: var(--dark-main)
 }
+
+.content table tbody tr td > a {
+    text-decoration: none;
+}
+
+.content table tbody tr td .article-options {
+    position: absolute;
+    display: none;
+}
+
+.content table tbody tr:hover td .article-options {
+    display: block;
+}
+
+.content table tbody tr td .article-options a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--main);
+    font-size: 0.9em;
+    text-transform: capitalize;
+    margin-right: 8px;
+}
+
 /* ُEnd table */

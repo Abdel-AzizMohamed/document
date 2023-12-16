@@ -1,0 +1,38 @@
+{% extends "layout.html" %} {% block content %}
+<!-- ########## Start Content ########## -->
+<div class="container content">
+  <!-- ########## Start table view ########## -->
+  <table class="table-full">
+    <thead>
+      <tr>
+        <th><input type="checkbox" /></th>
+        <th>title</th>
+        <th>author</th>
+        <th>Category</th>
+        <th>subcategory</th>
+        <th>index</th>
+        <th>date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="checkbox" name="article" value="0" /></td>
+        <td>
+          <a href="#">html Introduction</a>
+          <div class="article-options">
+            <a href="#">Edit</a>
+            <a href="#">Delete</a>
+            <a href="#">Preview</a>
+          </div>
+        </td>
+        <td>abdelaziz</td>
+        <td>html</td>
+        <td>html basics</td>
+        <td>1</td>
+        <td>2023/07/26</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- ########## End Content ########## -->
+{% endblock content %}

@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <!-- Css Packges -->
+    <!-- Css Packages -->
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/normalize.css') }}"
@@ -35,10 +35,6 @@
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/frame-work.css') }}"
-    />
-    <link
-      rel="stylesheet"
       href="{{ url_for('static', filename='css/home.css') }}"
     />
     <link
@@ -51,7 +47,7 @@
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/section.css') }}"
+      href="{{ url_for('static', filename='css/dashbord.css') }}"
     />
     <link
       rel="stylesheet"
@@ -69,6 +65,7 @@
       <ul class="dashbord">
         <li><a href="{{url_for('create_category')}}">Add category</a></li>
         <li><a href="{{url_for('create_article')}}">create article</a></li>
+        <li><a href="{{url_for('view_article')}}">view article</a></li>
       </ul>
       <div class="container">
         <nav>

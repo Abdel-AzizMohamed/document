@@ -1,5 +1,5 @@
 """Define site database"""
-from site_packge import db
+from site_package import db
 
 
 class Category(db.Model):
