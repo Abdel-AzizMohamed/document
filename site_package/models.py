@@ -1,4 +1,5 @@
 """Define site database"""
+import datetime
 from site_package import db
 
 
@@ -11,7 +12,7 @@ class Category(db.Model):
 
 
 class SubCategory(db.Model):
-    """Define subcategories table (html bascis, html forms, ...)"""
+    """Define subcategories table (html basics, html forms, ...)"""
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(20), nullable=False)
@@ -24,7 +25,10 @@ class Article(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(20), nullable=False)
+    author = db.Column(db.String(20), nullable=False)
     content = db.Column(db.Text, nullable=False)
+    index = db.Column(db.Integer, nullable=False)
+    post_date = db.Column(db.Date, nullable=False, default=datetime.date.today)
     sub_category_id = db.Column(
         db.Integer, db.ForeignKey("sub_category.id"), nullable=False
     )

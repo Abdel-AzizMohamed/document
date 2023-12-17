@@ -100,9 +100,18 @@ def create_article():
         form.category.choices.append(category)
 
     if request.method == "POST":
+        index = (
+            Article.query.filter(
+                Article.sub_category_id == form.sub_category.data
+            ).count()
+            + 1
+        )
+
         article = Article(
             title=form.title.data,
+            author="abdelaziz",
             content=form.content.data,
+            index=index,
             sub_category_id=form.sub_category.data,
         )
 
