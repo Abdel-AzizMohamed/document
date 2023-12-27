@@ -18,6 +18,7 @@ class SubCategory(db.Model):
     title = db.Column(db.String(20), nullable=False)
     index = db.Column(db.Integer, nullable=False)
     category_id = db.Column(db.Integer, db.ForeignKey("category.id"), nullable=False)
+    articles = db.relationship("Article", backref="sub_category", lazy=True)
 
 
 class Article(db.Model):

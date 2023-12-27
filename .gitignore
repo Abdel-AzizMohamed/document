@@ -2,6 +2,7 @@
 *.swp
 .vscode/
 temp.py
+src/
 
 # Python ignore
 *.pyc

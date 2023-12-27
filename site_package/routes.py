@@ -129,9 +129,16 @@ def create_article():
 def view_article() -> str:
     """Define articles view route"""
     navigation = get_navigation()
+    articles = Article.query.all()
+
+    for art in articles:
+        print(art.sub_category)
 
     return render_template(
-        "view_article.html", title="View Articles", navigation=navigation
+        "view_article.html",
+        title="View Articles",
+        navigation=navigation,
+        articles=articles,
     )
 
 

@@ -15,21 +15,24 @@
       </tr>
     </thead>
     <tbody>
+      {% for article in articles %}
       <tr>
-        <td><input type="checkbox" name="article" value="0" /></td>
+        <td><input type="checkbox" /></td>
         <td>
-          <a href="#">html Introduction</a>
+          <a href="#">{{ article.title }}</a>
           <div class="article-options">
             <a href="#">Edit</a>
             <a href="#">Delete</a>
             <a href="#">Preview</a>
           </div>
         </td>
-        <td>abdelaziz</td>
-        <td>html</td>
-        <td>html basics</td>
-        <td>1</td>
-        <td>2023/07/26</td>
+        <td>{{ article.author }}</td>
+        <td>{{ article.sub_category.category.title }}</td>
+        <td>{{ article.sub_category.title }}</td>
+        <td>{{ article.index }}</td>
+        <td>{{ article.post_date }}</td>
+      </tr>
+      {% endfor %}
       </tr>
     </tbody>
   </table>
