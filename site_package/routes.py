@@ -160,13 +160,20 @@ def get_sub_categories(parent_id):
 
 
 @app.route(
-    "/api/v1.0/article/<int:article_id>", methods=["POST", "GET"], strict_slashes=False
+    "/api/v1.0/article/<int:article_id>",
+    methods=["DELETE", "GET"],
+    strict_slashes=False,
 )
 def get_article(article_id):
-    """Api to get an article from its id"""
-    content = Article.query.filter(Article.id == article_id).first().content
+    """Api to work with articles with article id"""
+    query = Article.query.filter(Article.id == article_id)
 
-    return content
+    if request.method == "GET":
+        return query.first().content
+    query.delete()
+    db.session.commit()
+
+    return ""
 
 
 @app.route("/api/v1.0/image", methods=["POST", "GET"], strict_slashes=False)

@@ -22,7 +22,7 @@
           <a href="#">{{ article.title }}</a>
           <div class="article-options">
             <a href="#">Edit</a>
-            <a href="#">Delete</a>
+            <a id="delete-article" data-id="{{ article.id }}" href="#">Delete</a>
             <a href="#">Preview</a>
           </div>
         </td>
@@ -38,4 +38,5 @@
   </table>
 </div>
 <!-- ########## End Content ########## -->
+<script src="{{ url_for('static', filename='js/delete_article.js')}}"></script>
 {% endblock content %}
