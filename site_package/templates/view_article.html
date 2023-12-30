@@ -19,11 +19,11 @@
       <tr>
         <td><input type="checkbox" /></td>
         <td>
-          <a href="#">{{ article.title }}</a>
+          <a href="{{ url_for('article', category_id=article.sub_category.id, article_id=article.id) }}">{{ article.title }}</a>
           <div class="article-options">
             <a href="#">Edit</a>
             <a id="delete-article" data-id="{{ article.id }}" href="#">Delete</a>
-            <a href="#">Preview</a>
+            <a href="{{ url_for('article', category_id=article.sub_category.id, article_id=article.id) }}">Preview</a>
           </div>
         </td>
         <td>{{ article.author }}</td>

@@ -131,9 +131,6 @@ def view_article() -> str:
     navigation = get_navigation()
     articles = Article.query.all()
 
-    for art in articles:
-        print(art.sub_category)
-
     return render_template(
         "view_article.html",
         title="View Articles",
