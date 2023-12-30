@@ -125,6 +125,38 @@ def create_article():
     )
 
 
+@app.route(
+    "/update_article/<int:article_id>", methods=["POST", "GET"], strict_slashes=False
+)
+def update_article(article_id):
+    """Update post route"""
+    post = Article.query.get_or_404(article_id)
+    form = ArticleForm()
+    form.submit.label.text = "Update"
+    navigation = get_navigation()
+
+    categories = [
+        (item.id, item.title) for item in Category.query.order_by(Category.id).all()
+    ]
+    for category in categories:
+        form.category.choices.append(category)
+
+    if request.method == "POST":
+        post.title = form.title.data
+        post.content = form.content.data
+        post.sub_category_id = form.sub_category.data
+        db.session.commit()
+
+        flash("Post has been Updated!", "success")
+        return redirect(url_for("home"))
+
+    form.title.data = post.title
+    form.content.data = post.content
+    return render_template(
+        "create_article.html", title="Create Article", navigation=navigation, form=form
+    )
+
+
 @app.route("/view_article", methods=["POST", "GET"], strict_slashes=False)
 def view_article() -> str:
     """Define articles view route"""
