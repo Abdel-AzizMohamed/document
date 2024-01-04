@@ -22,7 +22,7 @@
           <a href="{{ url_for('article', category_id=article.sub_category.id, article_id=article.id) }}">{{ article.title }}</a>
           <div class="article-options">
             <a href="{{ url_for('update_article', article_id=article.id) }}">Edit</a>
-            <a id="delete-article" data-id="{{ article.id }}" href="#">Delete</a>
+            <button id="delete-article" data-id="{{ article.id }}" type="button">Delete</button>
             <a href="{{ url_for('article', category_id=article.sub_category.id, article_id=article.id) }}">Preview</a>
           </div>
         </td>

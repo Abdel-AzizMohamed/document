@@ -57,13 +57,17 @@
     display: block;
 }
 
-.content table tbody tr td .article-options a {
+.content table tbody tr td .article-options a,
+.content table tbody tr td .article-options button {
     display: inline-block;
+    background-color: transparent;
+    border: none;
     text-decoration: none;
     color: var(--main);
     font-size: 0.9em;
     text-transform: capitalize;
     margin-right: 8px;
+    cursor: pointer;
 }
 
 /* ُEnd table */
