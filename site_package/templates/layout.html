@@ -50,6 +50,11 @@
       href="{{ url_for('static', filename='css/dashbord.css') }}"
     />
     <link
+      id="theme"
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/dark-theme.css') }}"
+    />
+    <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/media.css') }}"
     />
@@ -69,23 +74,34 @@
       </ul>
       <div class="container">
         <nav>
-          <a class="logo" href="{{ url_for('home') }}">CodeDocument</a>
-          <li class="drop-down nav-item" id="dropDown">
-            <span class="hid-xe">Tutorials</span>
-            <i class="fa-solid fa-caret-down hid-xe" id="dropIcon"></i>
-            <i class="fa-solid fa-gear vis-xe-ib" id="dropIcon"></i>
-            <ul class="drop-menu" id="dropMenu">
-              {% for name, item in navigation.items() %}
-              <li>
-                <a
-                  href="{{ url_for('article', category_id=item.category_id, article_id=item.article_id)}}"
-                  >{{ name }}</a
-                >
-              </li>
-              {% endfor %}
+          <div class="left-side">
+            <a class="logo" href="{{ url_for('home') }}">CodeDocument</a>
+            <li class="drop-down nav-item" id="dropDown">
+              <span class="hid-xe">Tutorials</span>
+              <i class="fa-solid fa-caret-down hid-xe" id="dropIcon"></i>
+              <i class="fa-solid fa-gear vis-xe-ib" id="dropIcon"></i>
+              <ul class="drop-menu" id="dropMenu">
+                {% for name, item in navigation.items() %}
+                <li>
+                  <a
+                    href="{{ url_for('article', category_id=item.category_id, article_id=item.article_id)}}"
+                    >{{ name }}</a
+                  >
+                </li>
+                {% endfor %}
+              </ul>
+            </li>
+            <li class="nav-item hid-xe"><a href="#">about</a></li>
+          </div>
+          <div class="right-side">
+            <ul>
+              <li><a href="#">Login</a></li>
+              <li><a href="#">Sign Up</a></li>
             </ul>
-          </li>
-          <li class="nav-item hid-xe"><a href="#">about</a></li>
+            <button id="theme-switch" type="button">
+              <i class="fa-solid fa-sun"></i>
+            </button>
+          </div>
         </nav>
       </div>
     </header>
@@ -114,6 +130,7 @@
       </div>
     </footer>
     <!-- ########## End Footer ########## -->
+    <script src="{{ url_for('static', filename='js/swtich_theme.js')}}"></script>
     <script src="{{ url_for('static', filename='js/drop_down.js')}}"></script>
   </body>
 </html>

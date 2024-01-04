@@ -57,6 +57,13 @@ header nav {
     padding: 0;
     margin: 0;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .left-side,
+header .right-side {
+    display: flex;
     justify-content: flex-start;
     align-items: center;
 }
@@ -122,6 +129,47 @@ header nav .drop-down .drop-menu li:first-child a:hover {
 
 header nav .drop-down .drop-menu li a:hover {
     background-color: var(--main);
+}
+
+header nav .right-side ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+header nav .right-side ul li a {
+    display: inline-block;
+    text-transform: capitalize;
+    color: var(--dark-main);
+    text-decoration: none;
+    padding: 20px 10px;
+    cursor: pointer;
+}
+
+header nav .right-side ul li a:hover {
+    color: #fff;
+    background-color: var(--main);
+}
+
+header nav .right-side button {
+    background-color: var(--light-main);
+    border: 0.5px solid var(--dark-main);
+    color: var(--main);
+    border-radius: 50%;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: color 0.3s ease, background 0.3s ease;
+    margin-left: 15px;
+}
+
+header nav .right-side button:hover {
+    color: var(--light-main);
+    background-color: var(--main);
+    border-color: var(--light-main);
+    box-shadow: 0px 0px 6px var(--light-main);
 }
 /* End Nav */
 
